@@ -1,20 +1,20 @@
 <template name="editYourAvatarModal">
-    <div id="editYourAvatarModal" aria-hidden="true" aria-labelledby="editYourAvatarModalLabel" class="modal fade" role="dialog" tabindex="-1">
-        <div class="modal-dialog w-modal0">
-            <div class="modal-content modal-radius">
+    <div id="editYourAvatarModal" class="ui modal">
+        <div class="ui">
+            <div class="ui message">
                 <div class="modal-header">
-                    <button aria-hidden="true" class="close" data-dismiss="modal" type="button">×</button>
+                    <button aria-hidden="true" class="close" type="button">×</button>
                     <h4 id="editYourAvatarModalLabel" class="modal-title md-title">Edit Your Avatar</h4>
                 </div>
 
-                <div class="modal-body">
+                <div class="ui very padded segment">
                     {{> editYourAvatarModalBody}}
                 </div>
 
-                <div class="modal-footer">
+                <div class="ui very padded segment">
                     <div class="row">
-                        <div class="col-md-9 error"></div>
-                        <div class="col-md-3">
+                        <div class="ui message"></div>
+                        <div class="ui segment">
                             <input type="button" id="saveAvatarButton" class="btn btn-modal pull-right col-lg-12" value="SAVE"/>
                             <div class="clearfix"></div>
                         </div>
