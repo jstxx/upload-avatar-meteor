@@ -32,16 +32,21 @@ Template.editYourAvatarModal.rendered = function(){
     saveAvatarButton = $(tmpl.find('#saveAvatarButton'));
     propSaveAvatarButton(false);
     realImage = tmpl.find('#realImage');
-    modal.on('hide.bs.modal', function () {
-        clear();
-    });
-    modal.on('show.bs.modal', function () {
-        loadImage(tmpl, Meteor.user().profile.image);
-        $(function () {
-            displayImage.imgAreaSelect({ aspectRatio: '1:1', handles: true,
-            fadeSpeed: 200, onSelectChange: preview, parent: $('.modal-content') });
-        });
-    });
+    
+     $(".ui.modal").modal("setting", {
+        closable: true,
+        onApprove: function () {
+             clear();
+        },
+        onShow: function() {
+             loadImage(tmpl, Meteor.user().profile.image);
+            $(function () {
+                displayImage.imgAreaSelect({ aspectRatio: '1:1', handles: true,
+                fadeSpeed: 200, onSelectChange: preview, parent: $('.modal-content') });
+            });
+        }
+    })
+    
 };
 Template.editYourAvatarModalBody.rendered = function(){
     displayImage = $(this.find('#avatarUserImg'));
@@ -88,7 +93,9 @@ Template.editYourAvatarModal.events({
     'keypress': function(evt, tmp){
         if(evt.charCode == 13){
             evt.preventDefault();
-            modal.modal('hide');
+            
+             $(".ui.modal").modal('hide');
+         
         }
     }
 });
@@ -111,7 +118,7 @@ var processChangeAvatar = function(tmp){
                 }, 5000);
             }
             else {
-                modal.modal('hide');
+                $(".ui.modal").modal('hide');
             }
         });
 };
